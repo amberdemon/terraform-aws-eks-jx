@@ -114,6 +114,7 @@ module "iam_assumable_role_external_dns" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = [aws_iam_policy.external-dns.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.jx.id}:exdns-external-dns"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "exdns-external-dns" {
@@ -187,6 +188,7 @@ module "iam_assumable_role_cert_manager" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = [aws_iam_policy.cert-manager.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.cert_manager.id}:cm-cert-manager"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "cm-cert-manager" {
@@ -222,6 +224,7 @@ module "iam_assumable_role_cm_cainjector" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = [aws_iam_policy.cert-manager.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.cert_manager.id}:cm-cainjector"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "cm-cainjector" {
@@ -256,6 +259,7 @@ module "iam_assumable_role_controllerbuild" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = ["arn:aws:iam::aws:policy/AmazonS3FullAccess"]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.jx.id}:jenkins-x-controllerbuild"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "jenkins-x-controllerbuild" {
@@ -290,6 +294,7 @@ module "iam_assumable_role_jxui" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = ["arn:aws:iam::aws:policy/AmazonS3FullAccess"]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.jx.id}:jxui"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "jxui" {
