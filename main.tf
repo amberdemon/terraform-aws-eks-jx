@@ -54,6 +54,7 @@ module "cluster" {
   map_roles                 = var.map_roles
   map_users                 = var.map_users
   role_permissions_boundary_arn      = var.role_permissions_boundary_arn
+  permissions_boundary_arn      = var.permissions_boundary
 }
 
 // ----------------------------------------------------------------------------

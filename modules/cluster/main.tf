@@ -109,7 +109,7 @@ module "eks" {
   map_users    = var.map_users
   map_roles    = var.map_roles
   map_accounts = var.map_accounts
-
+  permissions_boundary = var.permissions_boundary
 }
 
 // ----------------------------------------------------------------------------

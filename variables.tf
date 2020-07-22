@@ -242,3 +242,11 @@ variable "role_permissions_boundary_arn" {
   type        = string
   default     = ""
 }
+
+
+
+variable "permissions_boundary" {
+  description = "Permissions boundary ARN to use for IAM role"
+  type        = string
+  default     = ""
+}
