@@ -142,3 +142,9 @@ variable "map_users" {
   }))
   default = []
 }
+
+variable "role_permissions_boundary_arn" {
+  description = "Permissions boundary ARN to use for IAM role"
+  type        = string
+  default     = ""
+}

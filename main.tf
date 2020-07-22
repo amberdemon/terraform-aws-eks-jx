@@ -53,6 +53,7 @@ module "cluster" {
   map_accounts              = var.map_accounts
   map_roles                 = var.map_roles
   map_users                 = var.map_users
+  role_permissions_boundary_arn      = var.role_permissions_boundary_arn
 }
 
 // ----------------------------------------------------------------------------

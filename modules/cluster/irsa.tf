@@ -49,6 +49,7 @@ module "iam_assumable_role_tekton_bot" {
   provider_url                  = local.oidc_provider_url
   role_policy_arns              = [aws_iam_policy.tekton-bot.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${kubernetes_namespace.jx.id}:tekton-bot"]
+  role_permissions_boundary_arn = var.role_permissions_boundary_arn
 }
 
 resource "kubernetes_service_account" "tekton-bot" {
